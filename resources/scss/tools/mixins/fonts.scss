@@ -1,0 +1,47 @@
+/* == Font family == */
+@mixin font($family: "", $weight:"", $style:"") {
+
+	@if $family == "primary" {
+
+		@if $weight == "" or $weight == 400 or $weight == "normal" or $weight == "regular" {
+			font-family: 'Roboto';
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@if $weight == 300 or $weight == "light" {
+			font-family: 'Roboto';
+			font-weight: lighter;
+			font-style: normal;
+		}
+		
+		@if $weight == 700 or $weight == "bold" {
+			font-family: 'Roboto';
+			font-weight: bold;
+			font-style: normal;
+		}
+
+	}
+
+}
+
+
+/* == Line-height == */
+
+@mixin line-height($fontSize: 0, $leading: 0) {
+  line-height: round(percentage($leading/$fontSize));
+}
+
+/* == Tracking == */
+
+@mixin letter-spacing($tracking: 0) {
+  letter-spacing: round($tracking/10)+px;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+

@@ -1,0 +1,43 @@
+.e-table {
+    border-collapse: collapse;
+    width: 100%;
+
+    @media(max-width: 767px) {
+        font-size: 14px;
+
+        &--hide-small-screen {
+            display: none;
+        }
+    }
+
+    @media(max-width: 500px) {
+        font-size: 12px;
+    }
+
+    tr {
+        background-color: $c_4;
+
+        &:nth-child(even) {
+            background-color: $c_1;
+        }
+    }
+
+    th,td {
+        border: 1px solid $c_8;
+        padding: 10px;
+        text-align: left;
+    }
+
+    thead {
+
+        tr{
+            background-color: $c_5;
+        }
+
+        td {
+            color: $c_3;
+            font-weight: bold;
+        }
+        
+    }
+}

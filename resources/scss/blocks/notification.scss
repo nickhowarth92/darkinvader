@@ -1,0 +1,21 @@
+.b-notification {
+    padding: 10px;
+    margin-bottom: 20px;
+    color: $c_1;
+    font-weight: bold;
+    font-size: 14px;
+
+    ul {
+        li {
+            font-weight: bold;
+            font-size: 14px;  
+        }
+    }
+
+    &--success {
+        background-color: $c_success;
+    }
+    &--error {
+        background-color: $c_error;
+    }
+}

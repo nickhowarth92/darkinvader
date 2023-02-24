@@ -1,4 +1,5 @@
 <template>
+    {{ tickets.links }}
     <table class="e-table">
         <thead>
             <tr>
@@ -9,18 +10,26 @@
         </thead>
         <tbody>
             <tr v-for="ticket in tickets" :key="ticket.id">
-                <td><Link :href="`/users/${ticket.email}/tickets`">{{ ticket.name }}</Link></td>
+                <td><Link class="e-link" :href="`/users/${ticket.email}/tickets`">{{ ticket.name }}</Link></td>
                 <td>{{ ticket.subject }}</td>
                 <td>{{ ticket.publish_date }}</td>
             </tr>
         </tbody>
     </table>
-</template>
 
+    <Pagination :links="links" />
+
+</template>
 <script>
+import Pagination from './Pagination.vue';
+
 export default {
     props: {
-        tickets: Object
+        tickets: Object,
+        links: Object
+    },
+    components: {
+        Pagination
     }
 }
 </script>

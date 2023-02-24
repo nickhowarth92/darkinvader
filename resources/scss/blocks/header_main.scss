@@ -1,0 +1,20 @@
+.b-header-main {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: $c_5;
+  color: $c_1;
+
+  @media (max-width: 767px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  &__inner {
+    @include container('standard');
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+}

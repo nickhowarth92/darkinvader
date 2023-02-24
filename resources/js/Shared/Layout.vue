@@ -6,7 +6,7 @@
 
     <Header />
 
-    <div class="container">
+    <div class="l-standard-container">
         <slot />
     </div>
 

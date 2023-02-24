@@ -1,0 +1,28 @@
+/* == Base colours == */
+$c_0: #000000; //Black
+$c_1: #FFFFFF; //White
+$c_2: #398f4a; //Green
+$c_3: #cd064f; //Red
+$c_4: #f2f2f2; //Grey
+$c_5: #2a2a2a; // Dark Grey
+$c_6: #d68b1a; // Orange
+$c_7: #1a9ed6; // Blue
+$c_8: #dddddd; // Mid Grey
+
+
+/* == List colours  == */
+
+// This is a workaround to generate convenience classes as SCSS doesn't support variable interpolation / dynamicially generated variables
+// Each colour variable (numbered) should be added to this list!
+
+$color-list: $c_0, $c_1, $c_2, $c_3, $c_4, $c_5, $c_6, $c_7, $c_8;
+
+// $color-list: 
+$c_primary-heading: $c_0;
+$c_primary-copy: $c_0;
+$c-primary-link-hover: $c_2;
+$c_primary-link: $c_2;
+
+$c_success: $c_2;
+$c_error: $c_3;
+

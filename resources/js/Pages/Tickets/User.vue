@@ -1,8 +1,8 @@
 <template>
-    <h1>User Tickets</h1>
+    <h1 class="e-heading-1">Individual User Tickets</h1>
 
-    <div v-if="error" class="b-notifcation b-notifcation--error">{{ error }}</div>
-    <TicketTable :tickets="tickets.data" v-else/>
+    <div v-if="error" class="b-notification b-notification--error">{{ error }}</div>
+    <TicketTable :tickets="tickets.data" :links="tickets.links" v-else/>
 
 </template>
 

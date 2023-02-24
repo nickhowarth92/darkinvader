@@ -1,0 +1,58 @@
+@mixin container($size: "", $pad: "") {
+  width: 100%;
+
+  @if $size == "standard" {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1360px;
+    
+    @if $pad == "none" {
+      padding-left: 0;
+      padding-right: 0;
+    } @else {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+  }
+
+  @else if $size == "small" {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 750px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @else if $size == "large" {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1680px;
+
+    @if $pad == "none" {
+      padding-left: 0;
+      padding-right: 0;
+    } @else {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+  }
+
+}
+
+@mixin containerYPad() {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @media only screen and (max-width: 1200px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+}

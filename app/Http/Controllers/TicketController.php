@@ -20,7 +20,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        // Not in use yet.
+        return;
     }
 
     /**
@@ -108,7 +109,70 @@ class TicketController extends Controller
      * Display a various stats for the tickets
     */
     public function stats() {
-        return Inertia::render('Home');
+
+        /*
+        * Simply Count the tickets table
+        */ 
+        $totalTickets = Ticket::count();
+
+        /*
+        * Count the tickets table where the status is 0 (unprocessed)
+        */ 
+        $unprocessedTickets = Ticket::where('status', 0)
+                                        ->count();
+
+        /*
+        * 1. Get the most common user_id in the tickets table
+        * 2. Then grab this user this is linked to
+        * 3. Finally just add a count for display
+        */ 
+        $highestTicketUser = Ticket::select('user_id')
+                        ->groupBy('user_id')
+                        ->orderByRaw('COUNT(*) DESC')
+                        ->first();
+        
+        //If we have results
+        if($highestTicketUser->count()) {
+            $highestUser = User::select('name')
+            ->where('id', $highestTicketUser->user_id)
+            ->first();
+            
+            $highestUser = $highestUser->name;
+
+            $highestUserCount = Ticket::where('user_id', $highestTicketUser->user_id)
+                    ->count();
+
+        //defaults
+        } else {
+            $highestUser = 'N/A';
+            $highestUserCount = 0;
+        }
+        
+
+
+        /*
+        * Check the latest updated Ticket with a status of 1, This is linked 
+        * to the time the artisan ticket:process ran on Tickets that needed processing
+        */                      
+        $lastProcessed = Ticket::select('updated_at')
+                            ->where('status', 1)
+                            ->orderBy('updated_at', 'DESC')
+                            ->first();
+
+        if($lastProcessed->count()) {
+            $lastProcessed = $lastProcessed->updated_at->format('Y-m-d H:i:s');
+        } else {
+            $lastProcessed = 'Not yet ran!';
+        }
+        
+
+        return Inertia::render('Home', [
+            'totalTickets' => $totalTickets,
+            'unprocessedTickets' => $unprocessedTickets,
+            'highestUser' => $highestUser,
+            'highestUserCount' => $highestUserCount,
+            'lastProcessed' => $lastProcessed
+        ]);
     }
 
     /**
@@ -125,7 +189,8 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Not in use yet.
+        return;
     }
 
     /**
@@ -133,7 +198,8 @@ class TicketController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Not in use yet.
+        return;
     }
 
     /**
@@ -150,7 +216,8 @@ class TicketController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Not in use yet.
+        return;
     }
 
     /**
