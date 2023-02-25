@@ -1,0 +1,135 @@
+body {
+  @include font('primary');
+  color: $c_0;
+}
+
+a {
+  text-decoration: none;
+  outline: 0;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+ul {
+  padding-left: 10px;
+
+  li {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+
+    @media(max-width: 767px) {
+      font-size: 14px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+code {
+  padding: 10px;
+  font-size: 12px;
+}
+
+/* == Headings == */
+.e-heading-1,
+.e-heading-2,
+.e-heading-3 {
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.e-heading-1 {
+  font-size: clamp(42px, 4vw, 72px);
+  @include font('primary', light);
+} 
+
+.e-heading-2 {
+  font-size: 24px;
+  @include font('primary', bold);
+}
+
+.e-heading-3 {
+  font-size: 20px;
+  @include font('primary', bold);
+}
+
+/* == Paragraphs == */
+
+.e-paragraph {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+
+  @media(max-width: 767px) {
+    font-size: 14px;
+}
+}
+
+p {
+  @extend .e-paragraph;
+}
+/* == Links == */
+
+.e-link {
+  text-decoration: none;
+  transition: color $ui_timing-hover;
+  color: $c_3;
+  font-size: rem(16);
+
+  @media(max-width: 767px) {
+    font-size: 14px;
+  }
+
+  &:hover {
+    color: $c_5;
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+
+/* == WYSIWYG Helper == */
+.h-typography-standard {
+  @extend .e-paragraph;
+
+  // Spacing
+  > * {
+    margin-top: 20px;
+  }
+
+  p {
+    @extend .e-paragraph;
+  }
+
+  a {
+    word-break: break-all;
+  }
+
+  h1 {
+    @extend .e-heading-1;
+  }
+
+  h2 {
+    @extend .e-heading-2;
+  }
+
+  h3 {
+    @extend .e-heading-3;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+}

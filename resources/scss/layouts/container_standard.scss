@@ -1,0 +1,56 @@
+.l-standard-container {
+  @include containerYPad();
+  @include container('standard');
+
+  &--flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media(max-width: 767px) {
+
+      &--reverse-small-screen {
+        flex-direction: column-reverse;
+      }
+      
+    }
+  }
+
+  &__sidebar {
+    width: 25%;
+
+    @media(max-width: 767px) {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__content {
+    width: 70%;
+
+    @media(max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  &--no-pad {
+    padding: 0;
+  }
+
+  &--no-pad-top {
+    padding-top: 0;
+  }
+
+  &--no-pad-left {
+    padding-left: 0;
+  }
+
+  &--no-pad-right {
+    padding-right: 0;
+  }
+
+  &--no-pad-bottom {
+    padding-bottom: 0;
+  }
+
+}

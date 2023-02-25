@@ -1,0 +1,13 @@
+/* == Background colour classes == */
+
+// Dynamically generated bcakground colour classes. See _vars.scss for colour list
+
+@each $colour in $color-list {
+
+	$i: index($color-list, $colour) - 1;
+
+    .h-bg-c-#{$i} {
+        background-color: $colour;
+    }
+
+}

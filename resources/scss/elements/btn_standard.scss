@@ -1,0 +1,40 @@
+.e-btn{
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+  padding: 16px 24px;
+  @include font('primary', 'bold');
+  outline: 0;
+  text-align: center;
+  transition: background-color $ui_timing-hover, opacity $ui_timing-hover;
+  color: $c_1;
+  background: $c_5;
+  border: none;
+  border-radius: 5px;
+  opacity: 1;
+
+  @media(max-width: 767px) {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    text-decoration: none;
+    outline: 0;
+    opacity: 0.8;
+  }
+
+  &--green {
+    background-color: $c_2;
+  }
+
+  &--red {
+    background-color: $c_3;
+  }
+
+  &--blue {
+    background-color: $c_7;
+  }
+}

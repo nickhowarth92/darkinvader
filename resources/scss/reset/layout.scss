@@ -1,0 +1,49 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+*, 
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $c_primary-copy;
+  background-color: $c_1;
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+  min-height: 100vh;
+
+  &.disable-scroll {
+    overflow-y: hidden;
+  }
+
+}
+
+textarea,
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+input[type="button"],
+input[type="submit"],
+select {
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

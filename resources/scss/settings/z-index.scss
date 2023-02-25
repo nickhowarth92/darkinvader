@@ -1,0 +1,15 @@
+// -----------------------------------------------------------
+// z-index.scss
+// -----------------------------------------------------------
+// Keep track of z-index layering for global items
+// Ordered from high to low
+// Naming convention: add the element's class to the list. Example:
+// $z-indexes: (
+//     "site-header",
+//     "site-footer"
+// );
+// -----------------------------------------------------------
+
+$z-indexes: (
+
+);
