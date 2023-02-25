@@ -132,7 +132,7 @@ class TicketController extends Controller
                         ->first();
         
         //If we have results
-        if($highestTicketUser->count()) {
+        if($highestTicketUser) {
             $highestUser = User::select('name')
             ->where('id', $highestTicketUser->user_id)
             ->first();
@@ -159,7 +159,7 @@ class TicketController extends Controller
                             ->orderBy('updated_at', 'DESC')
                             ->first();
 
-        if($lastProcessed->count()) {
+        if($lastProcessed) {
             $lastProcessed = $lastProcessed->updated_at->format('Y-m-d H:i:s');
         } else {
             $lastProcessed = 'Not yet ran!';

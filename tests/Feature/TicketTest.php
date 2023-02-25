@@ -10,18 +10,35 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+
 class TicketTest extends TestCase
 {
-    /**
-     * Test to see if we can view tickets that are open
-     */
-    public function test_open_tickets() : void 
-    {
-        // User::factory(10)->create();
-        // Ticket::factory10()->create();
 
+    use DatabaseMigrations;
+
+    public function test_ticket_stats_can_be_rendered() : void 
+    {
+        $response = $this->get('/');
+
+        $response->assertOk();
+
+    }
+
+    public function test_tickets_open_can_be_rendered() : void 
+    {
+        $response = $this->get('/tickets/open');
+
+        $response->assertOk();
+
+    }
+
+    public function test_tickets_closed_can_be_rendered() : void 
+    {
         $response = $this->get('/tickets/closed');
-        $response->assertStatus(200);
+
+        $response->assertOk();
 
     }
 }
