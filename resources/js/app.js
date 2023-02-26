@@ -1,4 +1,9 @@
 // import './bootstrap';
+
+import.meta.glob([
+  '../images/**',
+]);
+
 import { createApp, h } from 'vue'
 import { createInertiaApp, Link, Head } from '@inertiajs/vue3'
 
@@ -13,5 +18,11 @@ createInertiaApp({
       .component('Link', Link)
       .component('Head', Head)
       .mount(el)
+  },
+  progress: {
+    delay: 1,
+    color: '#cd064f',
+    includeCSS: true,
+    showSpinner: true,
   },
 })
