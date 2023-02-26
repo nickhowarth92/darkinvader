@@ -45,7 +45,7 @@ class TicketController extends Controller
         if(!$tickets->count()) {
             return Inertia::render('Tickets/Open', [
                 'tickets' => null,
-                'error' => 'No open Tickets!'
+                'error' => 'No open tickets to be processed!'
             ]);
         }
 
@@ -75,7 +75,7 @@ class TicketController extends Controller
         if(!$tickets->count()) {
             return Inertia::render('Tickets/Closed', [
                 'tickets' => null,
-                'error' => 'No Tickets Closed!'
+                'error' => 'No tickets processed!'
             ]);
         }
 
