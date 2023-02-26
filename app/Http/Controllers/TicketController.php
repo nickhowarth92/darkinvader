@@ -89,14 +89,13 @@ class TicketController extends Controller
      */
     public function user($email)
     {
-        //Validate there is an email
 
         $tickets = User::getUserTickets($email);   
 
         if(!$tickets->count()) {
             return Inertia::render('Tickets/User', [
                 'tickets' => null,
-                'error' => 'The user with '.$email.' has no tickets!'
+                'error' => 'The user with the email '.$email.' has no tickets!'
             ]);
         }
 
