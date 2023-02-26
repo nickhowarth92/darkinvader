@@ -1,11 +1,11 @@
 <template>
-    {{ tickets.links }}
     <table class="e-table">
         <thead>
             <tr>
                 <td>Name</td>
                 <td>Subject</td>
                 <td>Date Published</td>
+                <td>Acions</td>
             </tr>
         </thead>
         <tbody>
@@ -13,6 +13,7 @@
                 <td><Link class="e-link" :href="`/users/${ticket.email}/tickets`">{{ ticket.name }}</Link></td>
                 <td>{{ ticket.subject }}</td>
                 <td>{{ ticket.publish_date }}</td>
+                <td><Link class="e-btn" :href="`/tickets/${ticket.id}`">View</Link></td>
             </tr>
         </tbody>
     </table>

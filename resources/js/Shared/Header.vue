@@ -4,7 +4,7 @@
     <div class="b-header-main__inner">
         <div class="b-header-main__logo">
             <Link href="/" title="DarkInvader Dashboard">
-                <!-- <img src="/images/branding/di-logo.webp" /> -->
+                <img src="/images/branding/di-logo.webp">
             </Link>
         </div>
         <div class="b-header-main__nav">

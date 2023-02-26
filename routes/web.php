@@ -23,3 +23,4 @@ Route::get('/', [TicketController::class, 'stats']);
 Route::get('/tickets/open', [TicketController::class, 'open']);
 Route::get('/tickets/closed', [TicketController::class, 'closed']);
 Route::get('/users/{email}/tickets', [TicketController::class, 'user']);
+Route::get('/tickets/{id}', [TicketController::class, 'show']);

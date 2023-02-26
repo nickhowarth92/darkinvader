@@ -198,8 +198,20 @@ class TicketController extends Controller
      */
     public function show(string $id)
     {
-        // Not in use yet.
-        return;
+        $ticket = Ticket::find($id);
+
+        if($ticket) {
+            return Inertia::render('Tickets/Show', [
+                'ticket' => $ticket,
+                'user' => ['name' => $ticket->user->name, 'email' => $ticket->user->email]
+            ]);
+        } else {
+            return Inertia::render('Tickets/Show', [
+                'tickets' => null,
+                'error' => 'No ticket found!'
+            ]);
+        }
+
     }
 
     /**

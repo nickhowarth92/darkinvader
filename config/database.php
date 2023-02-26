@@ -43,6 +43,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        //For our PHPunit tests
         'sqlite_testing' => [
             'driver'   => 'sqlite',
             'database' => ':memory:',
