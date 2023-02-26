@@ -19,8 +19,8 @@ Inertia is an amazing new technology that allows the use of classic server-side 
 - Get [Laravel Sail](https://laravel.com/docs/9.x/sail#installation) up and running to the point of `./vendor/bin/sail up`
 - Get the database up and running with test data through the sail artisan command, please run `./vendor/bin/sail artisan migrate  --seed`.
 - run `npm install` and `composer install` to get the dependencies installed.
-- To get the console commands up and runnnung `./vendor/bin/sail artisan schedule:work`
-- Tests can be ran through sail or the standard `php artisan test`
+- To get the console commands up and running `./vendor/bin/sail artisan schedule:work`
+- Tests can be ran through sail or the standard artisan command `php artisan test`
 
 ## License
 
