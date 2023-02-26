@@ -24,3 +24,7 @@ Route::get('/tickets/open', [TicketController::class, 'open']);
 Route::get('/tickets/closed', [TicketController::class, 'closed']);
 Route::get('/users/{email}/tickets', [TicketController::class, 'user']);
 Route::get('/tickets/{id}', [TicketController::class, 'show']);
+
+Route::any('{catchall}', function () {
+    return Inertia::render('404');
+})->where('catchall', '.*');
