@@ -58,6 +58,21 @@ class TicketTest extends TestCase
     }
 
     /*
+    *   Test a single ticket can be viewed
+    */
+    public function test_single_ticket_can_be_viewed() : void {
+
+        $user = User::factory()
+                        ->has(Ticket::factory()->count(1))
+                        ->create();
+
+        $response = $this->get("/tickets/{$user->tickets[0]->id}");
+
+        $response->assertOk(); 
+        
+    }
+
+    /*
     *   Test the dashboard/stats page renders
     */
     public function test_ticket_stats_can_be_rendered() : void 
