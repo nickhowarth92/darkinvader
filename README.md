@@ -16,6 +16,7 @@ Inertia is a new technology that allows the use of classic server-side routing t
 ## Instructions
 - Clone the `main` GIT repo
 - Ensure Docker Desktop has started
+- Ensure you have a `.env` file
 - Install [Laravel Sail](https://laravel.com/docs/9.x/sail#installation) to the point of `./vendor/bin/sail up` to start the server
 - Run `./vendor/bin/sail artisan migrate  --seed` to insert test data into the database
 - Run `npm install` and `composer install` to install the dependencies
