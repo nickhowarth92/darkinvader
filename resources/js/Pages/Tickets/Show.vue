@@ -1,7 +1,7 @@
 <template>
     <h1 class="e-heading-1">Ticket Information</h1>
     
-    <div v-if="error" class="b-notification b-notification--error">{{ error }}</div>
+    <div v-if="!code.success" class="b-notification b-notification--error">{{ code.message }}</div>
     <div v-else class="b-ticket-card">
         <h2 class="e-heading-2">{{ ticket.subject }}</h2>
         <div class="b-ticket-card__row">
@@ -33,7 +33,7 @@ export default {
     props: {
         ticket: Object,
         user: Object,
-        error: String
+        code: Array
     },
 }
 </script>
