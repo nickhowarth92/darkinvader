@@ -30,7 +30,6 @@ class TicketController extends Controller
     public function open()
     {   
         $tickets = Ticket::query()
-            ->with('user')
             ->where('status', 0)
             ->paginate(10)
             ->through(fn($ticket) => [
@@ -51,7 +50,7 @@ class TicketController extends Controller
 
         return Inertia::render('Tickets/Open', [
             'tickets' => $tickets,
-            'code' => ['success' => true, 'message' => ''],
+            'code' => ['success' => true, 'message' => 'Successful request.'],
         ]);
     }
 
@@ -61,7 +60,6 @@ class TicketController extends Controller
     public function closed()
     {
         $tickets = Ticket::query()
-            ->with('user')
             ->where('status', 1)
             ->paginate(10)
             ->through(fn($ticket) => [
@@ -82,7 +80,7 @@ class TicketController extends Controller
 
         return Inertia::render('Tickets/Closed', [
             'tickets' => $tickets,
-            'code' => ['success' => true, 'message' => ''],
+            'code' => ['success' => true, 'message' => 'Successful request.'],
         ]);
     }
 
@@ -104,7 +102,7 @@ class TicketController extends Controller
 
         return Inertia::render('Tickets/User', [
             'tickets' => $tickets,
-            'code' => ['success' => true, 'message' => ''],
+            'code' => ['success' => true, 'message' => 'Successful request.'],
         ]);
     }
 
