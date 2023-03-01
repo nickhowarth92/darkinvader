@@ -45,12 +45,13 @@ class TicketController extends Controller
         if(!$tickets->count()) {
             return Inertia::render('Tickets/Open', [
                 'tickets' => null,
-                'error' => 'No open tickets to be processed!'
+                'code' => ['success' => false, 'message' => 'No open tickets to be processed!'],
             ]);
         }
 
         return Inertia::render('Tickets/Open', [
-            'tickets' => $tickets
+            'tickets' => $tickets,
+            'code' => ['success' => true, 'message' => ''],
         ]);
     }
 
@@ -75,12 +76,13 @@ class TicketController extends Controller
         if(!$tickets->count()) {
             return Inertia::render('Tickets/Closed', [
                 'tickets' => null,
-                'error' => 'No tickets processed!'
+                'code' => ['success' => false, 'message' => 'No tickets processed!'],
             ]);
         }
 
         return Inertia::render('Tickets/Closed', [
-            'tickets' => $tickets
+            'tickets' => $tickets,
+            'code' => ['success' => true, 'message' => ''],
         ]);
     }
 
@@ -95,12 +97,14 @@ class TicketController extends Controller
         if(!$tickets->count()) {
             return Inertia::render('Tickets/User', [
                 'tickets' => null,
-                'error' => 'The user with the email '.$email.' has no tickets!'
+                'success' => false,
+                'code' => ['success' => false, 'message' => 'The user with the email '.$email.' has no tickets!'],
             ]);
         }
 
         return Inertia::render('Tickets/User', [
-            'tickets' => $tickets
+            'tickets' => $tickets,
+            'code' => ['success' => true, 'message' => ''],
         ]);
     }
 
@@ -202,12 +206,13 @@ class TicketController extends Controller
         if($ticket) {
             return Inertia::render('Tickets/Show', [
                 'ticket' => $ticket,
-                'user' => ['name' => $ticket->user->name, 'email' => $ticket->user->email]
+                'user' => ['name' => $ticket->user->name, 'email' => $ticket->user->email],
+                'code' => ['success' => true, 'message' => ''],
             ]);
         } else {
             return Inertia::render('Tickets/Show', [
                 'tickets' => null,
-                'error' => 'No ticket found!'
+                'code' => ['success' => false, 'message' => 'No ticket found!'],
             ]);
         }
 

@@ -33,8 +33,8 @@ class TicketTest extends TestCase
         $response = $this->get("/users/{$user->email}/tickets");
 
         $response->assertInertia(fn (Assert $page) => $page
+            ->where('code.success', true)
             ->has('tickets')
-            ->missing('error')
         );
         
     }
@@ -47,7 +47,7 @@ class TicketTest extends TestCase
         $response = $this->get('/tickets/open');
                         
         $response->assertInertia(fn (Assert $page) => $page
-            ->has('error')
+            ->where('code.success', false)
             ->missing('ticket')
         );
     }
@@ -64,6 +64,7 @@ class TicketTest extends TestCase
         $response = $this->get("/tickets/{$user->tickets[0]->id}");
 
         $response->assertInertia(fn (Assert $page) => $page
+            ->where('code.success', true)
             ->has('ticket')
             ->has('user')
         );
@@ -98,8 +99,8 @@ class TicketTest extends TestCase
         $response = $this->get('/tickets/open');
                         
         $response->assertInertia(fn (Assert $page) => $page
+            ->where('code.success', true)
             ->has('tickets')
-            ->missing('error')
         );
 
 
@@ -118,8 +119,8 @@ class TicketTest extends TestCase
         $response = $this->get('/tickets/closed');
                         
         $response->assertInertia(fn (Assert $page) => $page
+            ->where('code.success', true)
             ->has('tickets')
-            ->missing('error')
         );
 
     }
