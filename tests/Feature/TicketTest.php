@@ -12,6 +12,7 @@ use Tests\TestCase;
 
 //Helpers
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Inertia\Testing\AssertableInertia as Assert;
 use Illuminate\Support\Arr;
 
 
@@ -31,15 +32,10 @@ class TicketTest extends TestCase
         
         $response = $this->get("/users/{$user->email}/tickets");
 
-        //Get the props object
-        $hasTickets = $response->getOriginalContent()->getData()['page']['props'];
-
-        //check for an error in our returned array
-        if(!Arr::exists($hasTickets, 'error')) {
-            $response->assertOk(); 
-        } else {
-            $response->assertStatus(404);
-        }
+        $response->assertInertia(fn (Assert $page) => $page
+            ->has('tickets')
+            ->missing('error')
+        );
         
     }
 
@@ -50,11 +46,10 @@ class TicketTest extends TestCase
     public function test_no_more_tickets_to_be_processed() : void {
         $response = $this->get('/tickets/open');
                         
-        $noTicketsToBeProcessed = $response->getOriginalContent()
-                        ->getData()['page']['props']['error'];
-
-
-        $response->assertSee($noTicketsToBeProcessed);
+        $response->assertInertia(fn (Assert $page) => $page
+            ->has('error')
+            ->missing('ticket')
+        );
     }
 
     /*
@@ -68,7 +63,10 @@ class TicketTest extends TestCase
 
         $response = $this->get("/tickets/{$user->tickets[0]->id}");
 
-        $response->assertOk(); 
+        $response->assertInertia(fn (Assert $page) => $page
+            ->has('ticket')
+            ->has('user')
+        );
         
     }
 
@@ -78,8 +76,14 @@ class TicketTest extends TestCase
     public function test_ticket_stats_can_be_rendered() : void 
     {
         $response = $this->get('/');
-
-        $response->assertOk();
+        
+        $response->assertInertia(fn (Assert $page) => $page
+            ->has('totalTickets')
+            ->has('unprocessedTickets')
+            ->has('highestUser')
+            ->has('highestUserCount')
+            ->has('lastProcessed')
+        );
 
     }
 
@@ -88,9 +92,15 @@ class TicketTest extends TestCase
     */
     public function test_tickets_open_can_be_rendered() : void 
     {
-        $response = $this->get('/tickets/open');
+        User::factory()->has(Ticket::factory()->count(10))
+                        ->create();
 
-        $response->assertOk();
+        $response = $this->get('/tickets/open');
+                        
+        $response->assertInertia(fn (Assert $page) => $page
+            ->has('tickets')
+            ->missing('error')
+        );
 
 
     }
@@ -100,9 +110,17 @@ class TicketTest extends TestCase
     */
     public function test_tickets_closed_can_be_rendered() : void 
     {
-        $response = $this->get('/tickets/closed');
+        User::factory()->count(10)->create();
+        Ticket::factory()->create([
+            'status' => 1,
+        ]);
 
-        $response->assertOk();
+        $response = $this->get('/tickets/closed');
+                        
+        $response->assertInertia(fn (Assert $page) => $page
+            ->has('tickets')
+            ->missing('error')
+        );
 
     }
 }
